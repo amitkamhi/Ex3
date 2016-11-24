@@ -2,13 +2,16 @@ package com.example.adrian_2.ex3;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher{
 
     private double first;
     private char operator;
@@ -19,14 +22,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EditText first = (EditText) findViewById(R.id.enterFirst);
+        first.addTextChangedListener(this);
     }
 
-    public void resetResult(View view){
+    public void reset(View view){
         res = 0;
-        String ans = Double.toString(res);
+        first = 0;
+        second = 0;
+        operator = '\u0000';
+
+        EditText first = (EditText) findViewById(R.id.enterFirst);
+        first.setText(null);
+        EditText second = (EditText) findViewById(R.id.enterSecond);
+        second.setText(null);
+        changeButtonState(false);
         TextView myTextView = (TextView) findViewById(R.id.answer);
-        myTextView.setText(ans);
+        myTextView.setText(null);
     }
+
 
     public void pressAdd(View view){
         operator ='+';
@@ -92,5 +107,30 @@ public class MainActivity extends AppCompatActivity {
         TextView myTextView = (TextView) findViewById(R.id.answer);
         myTextView.setText(ans);
       //  Log.d("myTag", "res=" + res);
+    }
+
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        EditText first = (EditText) findViewById(R.id.enterFirst);
+        changeButtonState(!(first.getText().toString().isEmpty()));
+    }
+
+    private void changeButtonState(Boolean newState){
+        findViewById(R.id.buttonAdd).setEnabled(newState);
+        findViewById(R.id.buttonMinus).setEnabled(newState);
+        findViewById(R.id.buttonMulti).setEnabled(newState);
+        findViewById(R.id.buttonDivisin).setEnabled(newState);
+        findViewById(R.id.buttonAnswer).setEnabled(newState);
     }
 }

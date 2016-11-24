@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Exercise 3: Simple calculator</string>
+    <string name="num1">First number</string>
+    <string name="num2">Second number</string>
     <string name="emptyNumber1">Please enter the first number</string>
     <string name="emptyNumber2">Please enter the second number</string>
     <string name="noOp">Please select an operator</string>
+    <string name="clear">Clear</string>
 </resources>
