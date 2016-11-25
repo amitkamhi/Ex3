@@ -25,21 +25,29 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
 
         EditText first = (EditText) findViewById(R.id.enterFirst);
         first.addTextChangedListener(this);
-    }
 
-    public void reset(View view){
-        res = 0;
-        first = 0;
-        second = 0;
-        operator = '\u0000';
+        Button clear = (Button) findViewById(R.id.buttonClear);
+        clear.setOnClickListener(new MyListener());
 
-        EditText first = (EditText) findViewById(R.id.enterFirst);
-        first.setText(null);
-        EditText second = (EditText) findViewById(R.id.enterSecond);
-        second.setText(null);
-        changeButtonState(false);
-        TextView myTextView = (TextView) findViewById(R.id.answer);
-        myTextView.setText(null);
+        Button ans = (Button)findViewById(R.id.buttonAns);
+        ans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText number1 = (EditText) findViewById(R.id.enterFirst);
+                String result = Double.toString(res);
+                res = 0;
+                second = 0;
+                operator = '\u0000';
+
+                EditText first = (EditText) findViewById(R.id.enterFirst);
+                first.setText(result);
+                EditText second = (EditText) findViewById(R.id.enterSecond);
+                second.setText(null);
+                findViewById(R.id.buttonAns).setEnabled(false);
+                TextView myTextView = (TextView) findViewById(R.id.answer);
+                myTextView.setText(null);
+            }
+        });
     }
 
 
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
     }
 
     public void result(View view){
+        findViewById(R.id.buttonAns).setEnabled(true);
         EditText num1 = (EditText) findViewById(R.id.enterFirst);
         String num = num1.getText().toString();
         Log.d("myTag", "num=" + num);
@@ -109,7 +118,6 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
       //  Log.d("myTag", "res=" + res);
     }
 
-
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -132,5 +140,24 @@ public class MainActivity extends AppCompatActivity implements TextWatcher{
         findViewById(R.id.buttonMulti).setEnabled(newState);
         findViewById(R.id.buttonDivisin).setEnabled(newState);
         findViewById(R.id.buttonAnswer).setEnabled(newState);
+    }
+
+    private class MyListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            res = 0;
+            first = 0;
+            second = 0;
+            operator = '\u0000';
+
+            EditText first = (EditText) findViewById(R.id.enterFirst);
+            first.setText(null);
+            EditText second = (EditText) findViewById(R.id.enterSecond);
+            second.setText(null);
+            changeButtonState(false);
+            findViewById(R.id.buttonAns).setEnabled(false);
+            TextView myTextView = (TextView) findViewById(R.id.answer);
+            myTextView.setText(null);
+        }
     }
 }

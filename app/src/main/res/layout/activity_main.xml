@@ -15,12 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="1"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="50dp">
 
             <TextView
@@ -37,10 +38,17 @@
                 android:inputType="number"
                 android:ems="10"
                 android:id="@+id/enterFirst"
-                android:layout_marginLeft="110dp"
+                android:layout_marginLeft="90dp"
                 android:background="@drawable/border"
-                android:textAlignment="center">
-            </EditText>
+                android:textAlignment="center"
+                android:hint="Enter number" />
+
+
+            TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/textView" />
 
         </LinearLayout>
 
@@ -57,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonAdd"
                 android:layout_weight="1"
-                android:onClick="pressAdd"/>
+                android:onClick="pressAdd"
+                android:enabled="false"/>
 
             <Button
                 android:text="-"
@@ -66,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonMinus"
                 android:layout_weight="1"
-                android:onClick="pressMinus"/>
+                android:onClick="pressMinus"
+                android:enabled="false"/>
 
             <Button
                 android:text="*"
@@ -75,7 +85,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonMulti"
                 android:layout_weight="1"
-                android:onClick="pressMulti"/>
+                android:onClick="pressMulti"
+                android:enabled="false"/>
 
             <Button
                 android:text="/"
@@ -84,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonDivisin"
                 android:layout_weight="1"
-                android:onClick="pressDivision"/>
+                android:onClick="pressDivision"
+                android:enabled="false"/>
         </LinearLayout>
 
         <LinearLayout
@@ -109,9 +121,10 @@
                 android:ems="10"
                 android:id="@+id/enterSecond"
                 android:layout_weight="1"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="40dp"
                 android:background="@drawable/border"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:hint="Enter number" />
 
         </LinearLayout>
 
@@ -135,29 +148,38 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/buttonAnswer"
                 android:layout_marginLeft="20dp"
-                android:onClick="result"/>
+                android:onClick="result"
+                android:enabled="false"/>
 
             <TextView
                 android:layout_width="110dp"
                 android:layout_height="match_parent"
                 android:id="@+id/answer"
-                android:layout_marginLeft="130dp"
+                android:layout_marginLeft="110dp"
                 android:background="@drawable/border"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textAlignment="center"
-                android:freezesText="true"/>
+                android:freezesText="true" />
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ans"
+            android:id="@+id/buttonAns"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:enabled="false"/>
 
         <Button
             android:text="@string/clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rest"
-            android:onClick="reset"
-            android:layout_marginTop="50dp"/>
+            android:id="@+id/buttonClear"
+            android:layout_marginTop="5dp"/>
 
     </LinearLayout>
 </RelativeLayout>

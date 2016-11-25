@@ -6,4 +6,5 @@
     <string name="emptyNumber2">Please enter the second number</string>
     <string name="noOp">Please select an operator</string>
     <string name="clear">Clear</string>
+    <string name="ans">Ans</string>
 </resources>
